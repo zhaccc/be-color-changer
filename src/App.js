@@ -27,9 +27,8 @@ class App extends Component {
     };
 
     handleTextInput = (e) => {
-        this.setState({
-            text: e.target.value
-        })
+        const text = e.target.value ? e.target.value : 'Click to change COLOR';
+        this.setState({text})
     };
 
     render() {
