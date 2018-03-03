@@ -16,11 +16,10 @@ class App extends Component {
             axios.get(
                 'http://www.colr.org/json/color/random'
             ).then((response) => {
-                const randomColor = `#${response.data.colors[0].hex}`;
-                this.setState({color: randomColor});
+                this.setState({color: `#${response.data.colors[0].hex}`})
             })
         } else {
-            this.setState({color: 'black'});
+            this.setState({color: 'black'})
         }
     };
 
@@ -30,6 +29,7 @@ class App extends Component {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <h1
+                    className="Colored-text"
                     onClick={this.handleClick}
                     style={{color: this.state.color}}>
                     Click to change color
