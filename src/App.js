@@ -1,21 +1,43 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            color: 'black'
+        }
+    }
+
+    handleClick = () => {
+        if (this.state.color === 'black') {
+            axios.get(
+                'http://www.colr.org/json/color/random'
+            ).then((response) => {
+                const randomColor = `#${response.data.colors[0].hex}`;
+                this.setState({color: randomColor});
+            })
+        } else {
+            this.setState({color: 'black'});
+        }
+    };
+
+    render() {
+        return (
+        <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <h1
+                    onClick={this.handleClick}
+                    style={{color: this.state.color}}>
+                    Click to change color
+                </h1>
+            </header>
+        </div>
+        );
+    }
 }
 
 export default App;
