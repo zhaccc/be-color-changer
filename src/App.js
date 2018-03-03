@@ -18,6 +18,8 @@ class App extends Component {
                 'http://www.colr.org/json/color/random'
             ).then((response) => {
                 this.setState({color: `#${response.data.colors[0].hex}`})
+            }).catch(error => {
+                console.log('Error fetching data', error)
             })
         } else {
             this.setState({color: 'black'})
