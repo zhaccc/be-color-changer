@@ -25,7 +25,6 @@ class App extends Component {
     };
 
     handleTextInput = (e) => {
-        console.log(e);
         this.setState({
             text: e.target.value
         })
