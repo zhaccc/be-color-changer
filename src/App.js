@@ -7,7 +7,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            color: 'black'
+            color: 'black',
+            text: 'Click to change COLOR'
         }
     }
 
@@ -23,6 +24,13 @@ class App extends Component {
         }
     };
 
+    handleTextInput = (e) => {
+        console.log(e);
+        this.setState({
+            text: e.target.value
+        })
+    };
+
     render() {
         return (
         <div className="App">
@@ -32,9 +40,16 @@ class App extends Component {
                     className="Colored-text"
                     onClick={this.handleClick}
                     style={{color: this.state.color}}>
-                    Click to change color
+                    {this.state.text}
                 </h1>
             </header>
+            <div>
+                <input
+                    type='text'
+                    placeholder='Type something'
+                    onChange={this.handleTextInput}>
+                </input>
+            </div>
         </div>
         );
     }
